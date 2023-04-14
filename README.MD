@@ -37,23 +37,14 @@ export const TweetSchema = z.object({
   tweet: z.string().min(1),
   tags: z.array(z.string()).min(3),
 })
-type Tweet = z.infer<typeof TweetSchema> // A TypeScript type
+type Tweet = z.infer<typeof TweetSchema>
 
-// A Client communicates with a LLM API, in this case, OpenAI's GPT.
 const gpTypedOpenAiClient = new OpenAiClientBuilder(env.OPEN_AI_SECRET_KEY).build()
 
-// A Prompter is responsible for building and sending the prompt.
-// It will also validate the type of the response.
-// PrompterForObject is a Prompter that has a TypeScript object as an input
-// and returns a TypeScript object as a type safe response.
-const prompterForObject = new PrompterForObjectBuilder(
-  gpTypedOpenAiClient,
-  {
-    tweet: "A tweet about the request. Maximun of 140 characters.",
-    tags: "3 hashtags about the tweet.",
-  },
-  TweetSchema
-).build()
+const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, TweetSchema, {
+  tweet: "A tweet about the request. Maximun of 140 characters.",
+  tags: "3 hashtags about the tweet.",
+}).build()
 
 //  Use an input object to make a request to the OpenAI API. The response will be type safe.
 const result = await prompterForObject.send<Tweet>({

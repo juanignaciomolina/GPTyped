@@ -54,8 +54,8 @@ const DEFAULT_PROMPT_FOR_OBJECT_OPTIONS: PromptForObjectOptions = {
 
 class PrompterForObject implements Prompter {
   private gpTypedClient: GPTypedClient
-  private schema: Record<string, unknown>
   private zodSchema: ZodSchema
+  private schema: Record<string, unknown>
   private options: PromptForObjectOptions
   private metaprompt?: string
   private reminder?: string
@@ -68,8 +68,8 @@ class PrompterForObject implements Prompter {
 
   constructor(
     gpTypedClient: GPTypedClient,
-    schema: Record<string, unknown>,
     zodSchema: ZodSchema,
+    schema: Record<string, unknown>,
     options: PromptForObjectOptionsExtended = {},
     metaprompt?: string,
     reminder?: string,
@@ -184,8 +184,8 @@ class PrompterForObject implements Prompter {
  */
 export class PrompterForObjectBuilder {
   private gpTypedClient: GPTypedClient
-  private schema: Record<string, unknown>
   private zodSchema: ZodSchema
+  private schema: Record<string, unknown>
   private options: PromptForObjectOptions
   private metaprompt?: string
   private reminder?: string
@@ -204,8 +204,8 @@ export class PrompterForObjectBuilder {
    */
   constructor(gpTypedClient: GPTypedClient, schema: Record<string, unknown>, zodSchema: ZodSchema) {
     this.gpTypedClient = gpTypedClient
-    this.schema = schema
     this.zodSchema = zodSchema
+    this.schema = schema
     this.options = DEFAULT_PROMPT_FOR_OBJECT_OPTIONS
     this.metaprompt = undefined
     this.reminder = undefined
@@ -315,8 +315,8 @@ export class PrompterForObjectBuilder {
   build(): PrompterForObject {
     return new PrompterForObject(
       this.gpTypedClient,
-      this.schema,
       this.zodSchema,
+      this.schema,
       this.options,
       this.metaprompt,
       this.reminder,
