@@ -39,7 +39,7 @@ export const TweetSchema = z.object({
 })
 type Tweet = z.infer<typeof TweetSchema>
 
-const gpTypedOpenAiClient = new OpenAiClientBuilder(env.OPEN_AI_SECRET_KEY).build()
+const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY").build()
 
 const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, TweetSchema, {
   tweet: "A tweet about the request. Maximun of 140 characters.",
@@ -48,11 +48,11 @@ const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, Twee
 
 //  Use an input object to make a request to the OpenAI API. The response will be type safe.
 const result = await prompterForObject.send<Tweet>({
-  topic: "Why spring is the best season?",
+  topic: "Why is spring the best season?",
 })
 
 // Access the Tweet type safe response
-console.log(result.tweet) // "Spring is the best season of the year."
+console.log(result.tweet) // "Spring is the best season because of the flowers and nature."
 console.log(result.tags) // ["#spring", "#flowers", "#nature"]
 ```
 
@@ -60,7 +60,7 @@ console.log(result.tags) // ["#spring", "#flowers", "#nature"]
 
 LLM's reponses are not deterministic. This means that the exact same prompt can result in different responses by the AI. Having this in mind, it's impossible to guarantee if the response will be a valid data structure or not. GPTyped will validate the response against the schema you provided using [Zod](https://zod.dev/) and return the response if it's valid. If the response is not valid, GPTyped will throw an error.
 
-It's recommended to retry the request at least a couple of times whenever you encounter a type error, as usually subsequent requests will return a valid response. Wiht GPT, you an also try [lowering the temperature](https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature) parameter of the AI to make it more predictable.
+It's recommended to retry the request at least a couple of times whenever you encounter a type error, as usually subsequent requests will return a valid response. With OpenAI's GPT, you an also try [lowering the temperature](https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature) parameter of the AI to make it more predictable.
 
 ## Contributing
 
