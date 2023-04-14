@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
@@ -42,6 +42,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "openai": "^3.2.1",
     "zod": "^3.21.4"
   }
 }

@@ -1,1 +1,4 @@
-export const Greeter = (name: string) => `Hello ${name}`;
+// Entry point for the package
+
+export * from "./clients"
+export * from "./prompters"
