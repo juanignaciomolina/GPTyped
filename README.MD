@@ -1,5 +1,7 @@
 ![GPTyped Logo](https://user-images.githubusercontent.com/4109119/232146486-ba95a5a7-54c4-4325-ad38-9f0dc0b77c51.png)
 
+![NPM Version](https://img.shields.io/npm/v/gptyped) ![NPM MIT License](https://img.shields.io/npm/l/gptyped)
+
 # GPTyped
 
 Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interact with OpenAI's GPT language model in a type-safe way. With GPTyped, you can send objects as prompts and receive structured responses from LLM AIs in a breeze, whether you're running it on the Web or on the Server. 💻
@@ -44,7 +46,7 @@ type Tweet = z.infer<typeof TweetSchema>
 const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY").build()
 
 const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, TweetSchema, {
-  tweet: "A tweet about the topic. Maximun of 140 characters.",
+  tweet: "A tweet about the topic. Maximum of 140 characters.",
   tags: "3 hashtags about the tweet.",
 }).build()
 
