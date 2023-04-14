@@ -1,6 +1,6 @@
 # GPTyped
 
-Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interact with OpenAI's GPT language model in a type-safe way. With GPTyped, you can send objects as prompts and receive structured responses from the LLM AI in a breeze, whether you're running it on the Web or on the Server. 💻
+Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interact with OpenAI's GPT language model in a type-safe way. With GPTyped, you can send objects as prompts and receive structured responses from LLM AIs in a breeze, whether you're running it on the Web or on the Server. 💻
 
 ## Features
 
@@ -37,12 +37,15 @@ export const TweetSchema = z.object({
   tweet: z.string().min(1),
   tags: z.array(z.string()).min(3),
 })
+type Tweet = z.infer<typeof TweetSchema> // A TypeScript type
 
 // A Client communicates with a LLM API, in this case, OpenAI's GPT.
 const gpTypedOpenAiClient = new OpenAiClientBuilder(env.OPEN_AI_SECRET_KEY).build()
 
-// A Prompter is responsible for building and sending the prompt. It will also validate the type of the response.
-// PrompterForObject is a Prompter that has a TypeScript object as an input and returns a TypeScript object as a type safe response.
+// A Prompter is responsible for building and sending the prompt.
+// It will also validate the type of the response.
+// PrompterForObject is a Prompter that has a TypeScript object as an input
+// and returns a TypeScript object as a type safe response.
 const prompterForObject = new PrompterForObjectBuilder(
   gpTypedOpenAiClient,
   {
@@ -53,16 +56,16 @@ const prompterForObject = new PrompterForObjectBuilder(
 ).build()
 
 //  Use an input object to make a request to the OpenAI API. The response will be type safe.
-const result = await prompterForObject.send<TweetSchema>({
+const result = await prompterForObject.send<Tweet>({
   topic: "Why spring is the best season?",
 })
 
-// Access the type safe response
+// Access the Tweet type safe response
 console.log(result.tweet) // "Spring is the best season of the year."
 console.log(result.tags) // ["#spring", "#flowers", "#nature"]
 ```
 
-### About structured responses and generative AI
+#### Note: About structured responses and generative AI
 
 LLM's reponses are not deterministic. This means that the exact same prompt can result in different responses by the AI. Having this in mind, it's impossible to guarantee if the response will be a valid data structure or not. GPTyped will validate the response against the schema you provided using [Zod](https://zod.dev/) and return the response if it's valid. If the response is not valid, GPTyped will throw an error.
 
