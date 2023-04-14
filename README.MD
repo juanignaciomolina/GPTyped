@@ -1,6 +1,5 @@
 ![GPTyped Logo](https://user-images.githubusercontent.com/4109119/232146486-ba95a5a7-54c4-4325-ad38-9f0dc0b77c51.png)
 
-
 # GPTyped
 
 Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interact with OpenAI's GPT language model in a type-safe way. With GPTyped, you can send objects as prompts and receive structured responses from LLM AIs in a breeze, whether you're running it on the Web or on the Server. 💻
@@ -45,7 +44,7 @@ type Tweet = z.infer<typeof TweetSchema>
 const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY").build()
 
 const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, TweetSchema, {
-  tweet: "A tweet about the request. Maximun of 140 characters.",
+  tweet: "A tweet about the topic. Maximun of 140 characters.",
   tags: "3 hashtags about the tweet.",
 }).build()
 
@@ -77,4 +76,4 @@ Contributions are welcome! Feel free to open issues or pull requests for bug fix
 
 ## License
 
-GPTyped is open-source software released under the MIT License. Feel free to use, modify, and distribute it as per the terms of the license.
+GPTyped is open-source software released under the [MIT License](https://github.com/juanignaciomolina/GPTyped/blob/master/LICENSE.MD). Feel free to use, modify, and distribute it as per the terms of the license.
