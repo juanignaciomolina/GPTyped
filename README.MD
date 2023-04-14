@@ -64,11 +64,11 @@ console.log(result.tags) // ["#spring", "#flowers", "#nature"]
 
 LLM's reponses are not deterministic. This means that the exact same prompt can result in different responses by the AI. Having this in mind, it's impossible to guarantee if the response will be a valid data structure or not. GPTyped will validate the response against the schema you provided using [Zod](https://zod.dev/) and return the response if it's valid. If the response is not valid, GPTyped will throw an error.
 
-It's recommended to retry the request at least a couple of times whenever you encounter a type error, as usually subsequent requests will return a valid response. With OpenAI's GPT, you an also try [lowering the temperature](https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature) parameter of the AI to make it more predictable.
+It's recommended to retry the request at least a couple of times whenever you encounter a type error, as usually subsequent requests will return a valid response. With OpenAI's GPT, you can also try [lowering the temperature](https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature) parameter of the AI to make it more predictable.
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues or pull requests for bug fixes, feature requests, or improvements. Please take a look at some planned improvements where you can jump in.
+Contributions are welcome! Feel free to open issues or pull requests for bug fixes, feature requests, or improvements. Please take a look at some planned improvements where you can jump in:
 
 - Automatic retry on failed requests
 - Clients for other popular LLM APIs
