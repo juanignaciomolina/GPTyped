@@ -1,2 +1,7 @@
+# Node dependencies and built files
 node_modules
 /lib
+
+# Misc
+.DS_Store
+*.pem

@@ -15,13 +15,13 @@ Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interac
 You can install GPTyped using NPM or Yarn:
 
 ```bash
-npm install gptyped
+npm install gptyped zod
 ```
 
 or
 
 ```bash
-yarn add gptyped
+yarn add gptyped zod
 ```
 
 ## Basic Usage
