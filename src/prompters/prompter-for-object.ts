@@ -202,7 +202,7 @@ export class PrompterForObjectBuilder {
    * @param {Record<string, unknown>} schema - The schema for the object to send with the prompt.
    * @param {ZodSchema} zodSchema - The ZodSchema for validating the object.
    */
-  constructor(gpTypedClient: GPTypedClient, schema: Record<string, unknown>, zodSchema: ZodSchema) {
+  constructor(gpTypedClient: GPTypedClient, zodSchema: ZodSchema, schema: Record<string, unknown>) {
     this.gpTypedClient = gpTypedClient
     this.zodSchema = zodSchema
     this.schema = schema
