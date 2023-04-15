@@ -19,13 +19,13 @@ Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interac
 You can install GPTyped using NPM or Yarn:
 
 ```bash
-npm install gptyped zod
+npm install gptyped zod openai
 ```
 
 or
 
 ```bash
-yarn add gptyped zod
+yarn add gptyped zod openai
 ```
 
 ## Basic Usage
