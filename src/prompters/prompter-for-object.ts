@@ -112,18 +112,21 @@ class PrompterForObject implements Prompter {
 
     if (this.options.verbose) {
       console.log("---------------------------------")
-      console.log("🤖 New request to OpenAI")
+      console.log("🤖 New request received by GPTyed")
     }
-    this.options.logPrompt && console.log(prompt)
-    this.options.verbose && console.log("📡 Awaiting response from OpenAI...")
+    if (this.options.logPrompt) {
+      console.log("📝 Prompt to send to the AI ready:")
+      console.log(prompt)
+    }
 
+    this.options.verbose && console.log("📡 Awaiting response from the AI...")
     // Make the actual request to OpenAI. Wrapped in an interceptor to allow for custom logic.
     const promptResult = this.rawResponsetInterceptor(
       await this.gpTypedClient.sendPrompt(this.rawRequestInterceptor(prompt))
     )
 
     if (this.options.verbose) {
-      console.log("✅ Response received from Open AI")
+      console.log("✅ Response received from the AI")
       console.log("🧹 Cleaning up possible JSON invalid characters...")
     }
     // Replace quotes with double quotes (as JSON requires to be valid)
