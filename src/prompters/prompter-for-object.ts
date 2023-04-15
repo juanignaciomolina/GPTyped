@@ -81,8 +81,8 @@ class PrompterForObject implements Prompter {
     zodSchemaInterceptor: (unsafeObject: object) => object = (unsafeObject) => unsafeObject
   ) {
     this.gpTypedClient = gpTypedClient
-    this.schema = schema
     this.zodSchema = zodSchema
+    this.schema = schema
     this.options = {
       ...DEFAULT_PROMPT_FOR_OBJECT_OPTIONS,
       ...options,
@@ -98,24 +98,24 @@ class PrompterForObject implements Prompter {
   }
 
   async send<ResponseObject>(input: object): Promise<ResponseObject> {
-    const prompt = `
-      ${this.metaprompt ? this.metaprompt + "\n" : ""}
-      ${this.memory ? "Consider this context for your response: " + this.memory + "\n" : ""}
-      ${this.reminder ? this.reminder + "\n" : ""}
+    const prompt =
+      (this.metaprompt + "\n" || "") +
+      (this.memory + "\n" || "") +
+      "input = " +
+      JSON.stringify(input, null, 4) +
+      "\n" +
+      "output = " +
+      JSON.stringify(this.schema, null, 4) +
+      "\n" +
+      (this.reminder ? "Remember: " + this.reminder + "\n" : "") +
+      "[JSON ONLY]"
 
-      output = ${JSON.stringify(this.schema, null, 4)}
-
-      input = ${JSON.stringify(input, null, 4)}
-
-      [JSON ONLY]
-  `
     if (this.options.verbose) {
       console.log("---------------------------------")
       console.log("🤖 New request to OpenAI")
     }
     this.options.logPrompt && console.log(prompt)
     this.options.verbose && console.log("📡 Awaiting response from OpenAI...")
-    console.log(this.gpTypedClient)
 
     // Make the actual request to OpenAI. Wrapped in an interceptor to allow for custom logic.
     const promptResult = this.rawResponsetInterceptor(

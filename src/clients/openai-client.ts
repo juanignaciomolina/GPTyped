@@ -1,34 +1,37 @@
 import { GPTypedClient } from "."
-import { Configuration, OpenAIApi, CreateChatCompletionRequest, ChatCompletionRequestMessageRoleEnum } from "openai"
 
 export const DEFAULT_OPEN_AI_OPTIONS = {
   model: "gpt-3.5-turbo",
-  max_tokens: 4000,
+  max_tokens: 2000,
   temperature: 0.4,
 }
 
-// Sends a prompt to OpenAI and returns the response.
-export const sendPromptToOpenAi = async (
-  messages: CreateChatCompletionRequest["messages"],
-  openai: OpenAIApi,
-  options: any = DEFAULT_OPEN_AI_OPTIONS
-): Promise<string> => {
-  const response = await openai.createChatCompletion({
-    ...options,
-    messages,
-  })
-  return response?.data?.choices?.[0]?.message?.content ?? ""
-}
-
-// Sends a prompt to OpenAI and returns the response.
-export const sendPromptToOpenAiWithChatFormat =
+// Sends a prompt to OpenAI and returns the response using the "Chat Completions" endpoint.
+export const sendPromptToOpenAiWithChatCompletionsEndpoint =
   (apiKey: string, options: any = DEFAULT_OPEN_AI_OPTIONS) =>
-  async (content: string): Promise<string> => {
-    const configuration = new Configuration({
-      apiKey,
+  async (prompt: string): Promise<string> => {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...options,
+        messages: [{ role: "user", content: prompt }],
+      }),
     })
-    const openai = new OpenAIApi(configuration)
-    return sendPromptToOpenAi([{ content, role: ChatCompletionRequestMessageRoleEnum.User }], openai, options)
+
+    if (!response.ok) {
+      throw new Error("OpenAI API Error: " + response)
+    }
+
+    // parse the response from OpenAI as json
+    const data = await response.json()
+
+    // Return the response from OpenAI
+    // See: https://platform.openai.com/docs/guides/chat/response-format
+    return data?.choices?.[0]?.message?.content
   }
 
 /**
@@ -61,7 +64,7 @@ export class OpenAiClientBuilder {
   constructor(apiKey: string) {
     this.apiKey = apiKey
     this.options = DEFAULT_OPEN_AI_OPTIONS
-    this.openAiSendFunction = sendPromptToOpenAiWithChatFormat(this.apiKey, this.options)
+    this.openAiSendFunction = sendPromptToOpenAiWithChatCompletionsEndpoint(this.apiKey, this.options)
   }
 
   /**
