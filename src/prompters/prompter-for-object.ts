@@ -115,6 +115,7 @@ class PrompterForObject implements Prompter {
     }
     this.options.logPrompt && console.log(prompt)
     this.options.verbose && console.log("📡 Awaiting response from OpenAI...")
+    console.log(this.gpTypedClient)
 
     // Make the actual request to OpenAI. Wrapped in an interceptor to allow for custom logic.
     const promptResult = this.rawResponsetInterceptor(

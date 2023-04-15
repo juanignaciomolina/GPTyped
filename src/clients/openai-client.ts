@@ -7,6 +7,7 @@ export const DEFAULT_OPEN_AI_OPTIONS = {
   temperature: 0.4,
 }
 
+// Sends a prompt to OpenAI and returns the response.
 export const sendPromptToOpenAi = async (
   messages: CreateChatCompletionRequest["messages"],
   openai: OpenAIApi,
@@ -19,7 +20,8 @@ export const sendPromptToOpenAi = async (
   return response?.data?.choices?.[0]?.message?.content ?? ""
 }
 
-export const sendPromptToOpenAiWithTextGenerator =
+// Sends a prompt to OpenAI and returns the response.
+export const sendPromptToOpenAiWithChatFormat =
   (apiKey: string, options: any = DEFAULT_OPEN_AI_OPTIONS) =>
   async (content: string): Promise<string> => {
     const configuration = new Configuration({
@@ -35,8 +37,8 @@ export const sendPromptToOpenAiWithTextGenerator =
 class OpenAiClient implements GPTypedClient {
   private openAiSendFunction: (text: string) => Promise<string>
 
-  constructor(openAiConnector: (text: string) => Promise<string>) {
-    this.openAiSendFunction = openAiConnector
+  constructor(sendFunction: (text: string) => Promise<string>) {
+    this.openAiSendFunction = sendFunction
   }
 
   sendPrompt(prompt: string): Promise<string> {
@@ -59,7 +61,7 @@ export class OpenAiClientBuilder {
   constructor(apiKey: string) {
     this.apiKey = apiKey
     this.options = DEFAULT_OPEN_AI_OPTIONS
-    this.openAiSendFunction = sendPromptToOpenAiWithTextGenerator(this.apiKey, this.options)
+    this.openAiSendFunction = sendPromptToOpenAiWithChatFormat(this.apiKey, this.options)
   }
 
   /**
@@ -74,11 +76,11 @@ export class OpenAiClientBuilder {
 
   /**
    * Sets a custom way of sending prompts to OpenAI.
-   * @param {(text: string) => Promise<string>} promptClient - A function that sends prompt to OpenAI.
+   * @param {(text: string) => Promise<string>} sendFunction - A function that sends a prompt to OpenAI.
    * @returns {OpenAiClientBuilder} - Returns the updated OpenAiClientBuilder instance.
    */
-  withOpenAiSendFunction(promptClient: (text: string) => Promise<string>): OpenAiClientBuilder {
-    this.openAiSendFunction = promptClient
+  withOpenAiSendFunction(sendFunction: (text: string) => Promise<string>): OpenAiClientBuilder {
+    this.openAiSendFunction = sendFunction
     return this
   }
 
