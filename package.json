@@ -1,6 +1,6 @@
 {
   "name": "gptyped",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
   "main": "lib/index.ts",
   "types": "lib/index.d.ts",
