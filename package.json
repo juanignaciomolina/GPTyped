@@ -1,6 +1,6 @@
 {
   "name": "gptyped",
-  "version": "1.0.4-alpha.0",
+  "version": "1.0.4-alpha.1",
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
   "exports": {
     ".": {
