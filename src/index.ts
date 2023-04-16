@@ -1,4 +1,4 @@
 // Entry point for the package
 
-export * from "./clients"
-export * from "./prompters"
+export * from "./clients/index"
+export * from "./prompters/index"
