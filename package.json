@@ -15,7 +15,7 @@
     }
   },
   "types": "./lib/cjs/types/index.d.ts",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/cjs/index",
   "files": [
     "lib/**/*"
   ],
