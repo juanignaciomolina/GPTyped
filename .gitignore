@@ -1,6 +1,6 @@
 # Node dependencies and built files
 node_modules
-/lib
+/dist
 
 # Misc
 .DS_Store
