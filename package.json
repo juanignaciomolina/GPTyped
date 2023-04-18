@@ -11,9 +11,6 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./dist",
