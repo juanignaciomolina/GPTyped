@@ -20,7 +20,7 @@
     "build": "npm run clean && tsup",
     "dev": "tsup --watch",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p ./configs/tsconfig.base.json",
+    "lint": "tslint -p ./tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
