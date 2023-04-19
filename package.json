@@ -3,7 +3,7 @@
   "version": "1.0.5-alpha.5",
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
   "type": "module",
-  "main": "dist/index.ts",
+  "main": "dist/index",
   "exports": {
     ".": {
       "default": "./dist/index.cjs",
