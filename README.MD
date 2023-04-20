@@ -33,7 +33,7 @@ yarn add gptyped zod
 Using GPTyped is simple. Here's an example of how you can send objects as prompts and receive type safe objects responses:
 
 ```typescript
-const { OpenAiClientBuilder, PrompterForObjectBuilder } = require("gptyped")
+import { OpenAiClientBuilder, PrompterForObjectBuilder } from "gptyped"
 import { z } from "zod"
 
 // A Zod schema describing the type of the AI response
