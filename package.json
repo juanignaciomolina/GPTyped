@@ -1,6 +1,6 @@
 {
   "name": "gptyped",
-  "version": "1.0.5-alpha.15",
+  "version": "1.0.5",
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
