@@ -6,13 +6,17 @@
   "main": "dist/index",
   "exports": {
     ".": {
-      "default": "./dist/index.cjs",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "node": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
-    "./package.json": "./package.json"
+    "./clients": {
+      "import": "./dist/clients/index.js",
+      "require": "./dist/clients/index.cjs"
+    },
+    "./prompters": {
+      "import": "./dist/prompters/index.js",
+      "require": "./dist/prompters/index.cjs"
+    }
   },
   "files": [
     "dist/**/*"
@@ -20,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && tsup",
+    "build": "npm run clean && tsup ",
     "dev": "tsup --watch",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p ./tsconfig.json",

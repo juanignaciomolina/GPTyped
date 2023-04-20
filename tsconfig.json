@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./lib",
     "target": "ESNext",
     "moduleResolution": "node",
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["lib", "node_modules"]
 }
