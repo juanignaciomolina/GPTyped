@@ -8,9 +8,6 @@ export const tsup: Options = {
   clean: true, // rimraf disr
   dts: true, // generate dts file for main module
   format: ["cjs", "esm"], // generate cjs and esm files
-  //minify: env === "production",
-  //bundle: env === "production",
-  //skipNodeModulesBundle: true,
   entryPoints: ["src/index.ts"],
   watch: env === "development",
   target: "es2020",
