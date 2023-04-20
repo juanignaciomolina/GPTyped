@@ -2,9 +2,9 @@
   "name": "gptyped",
   "version": "1.0.5-alpha.10",
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
-  "main": "lib/index.cjs",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "files": [
     "lib",
@@ -13,7 +13,7 @@
   "scripts": {
     "ts-types": "tsc",
     "build": "rimraf dist && env NODE_ENV=production tsup",
-    "build:dev": "rimraf lib && tsup --watch",
+    "dev": "rimraf dist && tsup --watch",
     "build:watch": "tsup --watch",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p ./tsconfig.json",
