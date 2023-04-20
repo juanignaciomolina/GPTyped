@@ -4,6 +4,7 @@
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
   "type": "module",
   "main": "dist/index",
+  "module": "dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
