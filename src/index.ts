@@ -1,8 +1,9 @@
 // Entry point for the package
+import { GPTypedClient, OpenAiClientBuilder } from "./clients"
+import { Prompter, PrompterForObjectBuilder } from "./prompters"
 
-export function test(): string {
+function test(): string {
   return "Hello from the package!"
 }
 
-export * from "./clients/index"
-export * from "./prompters/index"
+export { test, GPTypedClient, OpenAiClientBuilder, Prompter, PrompterForObjectBuilder }

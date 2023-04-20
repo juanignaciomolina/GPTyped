@@ -2,31 +2,19 @@
   "name": "gptyped",
   "version": "1.0.5-alpha.9",
   "description": "Utility for making structured requests and get type safe responses from LLMs. Like using JSON for OpenAI GPT.",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "type": "module",
-  "main": "dist/index",
-  "module": "dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./clients": {
-      "import": "./dist/clients/index.js",
-      "require": "./dist/clients/index.cjs"
-    },
-    "./prompters": {
-      "import": "./dist/prompters/index.js",
-      "require": "./dist/prompters/index.cjs"
-    }
-  },
   "files": [
-    "dist/**/*"
+    "lib",
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf ./dist",
-    "build": "npm run clean && tsup ",
-    "dev": "tsup --watch",
+    "ts-types": "tsc",
+    "build": "rimraf dist && env NODE_ENV=production tsup",
+    "build:dev": "rimraf lib && tsup --watch",
+    "build:watch": "tsup --watch",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p ./tsconfig.json",
     "prepare": "npm run build",
@@ -35,19 +23,17 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "tsup": {
-    "dts": true,
-    "bundle": false,
-    "treeshake": true,
-    "sourcemap": true,
-    "target": "node16",
-    "format": [
-      "esm",
-      "cjs"
-    ],
-    "entry": [
-      "src/**/*.ts"
-    ]
+  "devDependencies": {
+    "@types/node": "^18.15.12",
+    "prettier": "^2.8.7",
+    "rimraf": "^5.0.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "zod": "3.21.4"
   },
   "repository": {
     "type": "git",
@@ -70,15 +56,5 @@
   "bugs": {
     "url": "https://github.com/juanignaciomolina/GPTyped/issues"
   },
-  "homepage": "https://github.com/juanignaciomolina/GPTyped#readme",
-  "devDependencies": {
-    "prettier": "^2.8.7",
-    "tslint": "^6.1.3",
-    "tslint-config-prettier": "^1.18.0",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "zod": "3.21.4"
-  }
+  "homepage": "https://github.com/juanignaciomolina/GPTyped#readme"
 }

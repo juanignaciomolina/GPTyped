@@ -1,11 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./lib",
-    "target": "ESNext",
-    "moduleResolution": "node",
     "declaration": true,
+    "target": "ESNext",
+    "lib": ["esnext", "dom"],
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "module": "ESNext",
     "skipLibCheck": true,
-    "esModuleInterop": true
+    "rootDir": "src",
+    "emitDeclarationOnly": true,
+    "strictPropertyInitialization": false
   },
-  "exclude": ["lib", "node_modules"]
+  "include": [
+    "src/**/*",
+    "lib/index.d.ts" // declaration file path
+  ]
 }
