@@ -25,14 +25,14 @@ npm install gptyped zod
 or
 
 ```bash
-yarn add gptyped zod
+  yarn add gptyped zod
 ```
 
 ## Basic Usage
 
 Using GPTyped is simple. Here's an example of how you can send objects as prompts and receive type safe objects responses:
 
-```typescript
+```typescript {11-21} copy
 import { OpenAiClientBuilder, PrompterForObjectBuilder } from "gptyped"
 import { z } from "zod"
 

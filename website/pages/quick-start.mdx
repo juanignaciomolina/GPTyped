@@ -1,0 +1,108 @@
+import { Tab, Tabs } from "nextra-theme-docs"
+import { Steps } from "nextra-theme-docs"
+
+# Quick start
+
+<Steps>
+    ### Install the package
+    <Tabs items={["npm", "pnpm", "yarn"]}>
+        <Tab>
+        ```bash copy
+        npm install gptyped zod
+        ````
+        </Tab>
+        <Tab>
+        ```bash copy
+        pnpm install gptyped zod
+        ````
+        </Tab>
+        <Tab>
+        ```bash copy
+        add install gptyped zod
+        ````
+        </Tab>
+    </Tabs>
+
+    ### Define your Zod schema
+    Describe the object you want to generate with GPTyped using Zod. In this example, we want to generate tweets.
+
+    ```typescript copy
+    import { z } from "zod"
+
+    // A Zod schema describing the type of the AI response
+    export const TweetSchema = z.object({
+        tweet: z.string().min(1),
+        tags: z.array(z.string()).min(3),
+        })
+    type Tweet = z.infer<typeof TweetSchema>
+    ```
+
+    ### Build a `client`
+    A `client` handles the connection with an AI. In this example, we use a built-in client for OpenAI API.
+
+    ```typescript copy
+    import { OpenAiClientBuilder, PrompterForObjectBuilder } from "gptyped"
+
+    const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY").build()
+    ```
+
+    *Note: replace `YOUR_OPEN_AI_SECRET_KEY` with your actual OpenAI key.*
+
+    ### Build a `prompter`
+
+    A `prompter` is in charge of *writing the prompt* that will be sent to the AI.
+
+    ```typescript copy
+    const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, TweetSchema, {
+        tweet: "A tweet about the topic. Maximum of 140 characters.",
+        tags: "3 hashtags about the tweet.",
+        }).build()
+    ```
+
+    In this example, we use a built-in prompter that has 3 parameters:
+    - a `client` that will be used to send the prompt to the AI
+    - a Zod schema to validate the response
+    - an object that has the same keys as the schema and will be used as an example for the AI of what it should generate
+
+    ### Make the request
+    Send the prompt to the AI and wait for the response.
+
+    ```typescript copy
+    const result = await prompterForObject.send<Tweet>({
+        topic: "Why is spring the best season?",
+        })
+    ```
+
+</Steps>
+
+## Full example
+
+In this example, we use GPTyped to generate tweets. The response is type safe and validated with Zod, so you can safely access the generated tweet and tags.
+
+```typescript {11-21} copy
+import { OpenAiClientBuilder, PrompterForObjectBuilder } from "gptyped"
+import { z } from "zod"
+
+// A Zod schema describing the type of the AI response
+export const TweetSchema = z.object({
+  tweet: z.string().min(1),
+  tags: z.array(z.string()).min(3),
+})
+type Tweet = z.infer<typeof TweetSchema>
+
+const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY").build()
+
+const prompterForObject = new PrompterForObjectBuilder(gpTypedOpenAiClient, TweetSchema, {
+  tweet: "A tweet about the topic. Maximum of 140 characters.",
+  tags: "3 hashtags about the tweet.",
+}).build()
+
+//  Use an input object to make a request to the OpenAI API. The response will be type safe.
+const result = await prompterForObject.send<Tweet>({
+  topic: "Why is spring the best season?",
+})
+
+// Access the Tweet type safe response
+console.log(result.tweet) // "Spring is the best season because of the flowers and nature."
+console.log(result.tags) // ["#spring", "#flowers", "#nature"]
+```
