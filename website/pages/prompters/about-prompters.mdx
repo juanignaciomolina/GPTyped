@@ -2,7 +2,7 @@ import { Callout } from "nextra-theme-docs"
 
 # Prompters
 
-<Callout type="warning">
+<Callout type="info">
   This information is relevant for developers who want to create their own `prompter` that build requests for the AI to
   generate a specific kind of response. Please take a look at the pre-built prompters in the Prompters section if you
   are looking for a ready to use `prompter` to use in your application ([like this one for type-safe
@@ -15,7 +15,7 @@ A `prompter` is a class that builds a text request _(prompt)_ to send to the AI 
 
 It is only responsable of generating the prompt and validating the generated response by the AI.
 
-It doesn't handle the communication with the AI or is even aware of which AI is being used. For this objective, it relies on a `client` to send the prompt and receive the response.
+It doesn't handle the communication with the AI or is even aware of which AI is being used. For this objective, it relies on a [`client`](/clients/about-clients) to send the prompt and receive the response.
 
 ## The `prompter` interface
 
