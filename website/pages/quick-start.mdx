@@ -62,7 +62,7 @@ _**Note:** replace `YOUR_OPEN_AI_SECRET_KEY` with your actual [OpenAI key](https
 
     In this example, we use a built-in prompter that has 3 parameters:
     - a [`client`](/clients/about-clients) that will be used to send the prompt to the AI
-    - a Zod schema to validate the response
+    - a [Zod](https://github.com/colinhacks/zod) schema to validate the response
     - an object that has the same keys as the schema and will be used as an example for the AI of what it should generate
 
     ### Make the request
@@ -78,7 +78,7 @@ _**Note:** replace `YOUR_OPEN_AI_SECRET_KEY` with your actual [OpenAI key](https
 
 ## Full example
 
-In this example, we use GPTyped to generate tweets. The response is type safe and validated with Zod, so you can safely access the generated tweet and tags.
+In this example, we use GPTyped to generate tweets. The response is type safe and validated with [Zod](https://github.com/colinhacks/zod), so you can safely access the generated tweet and tags.
 
 ```typescript {11-21} copy
 import { OpenAiClientBuilder, PrompterForObjectBuilder } from "gptyped"
