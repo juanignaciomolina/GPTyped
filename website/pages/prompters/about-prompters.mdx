@@ -1,0 +1,37 @@
+import { Callout } from "nextra-theme-docs"
+
+# Prompters
+
+<Callout type="info">
+  This information is relevant for developers who want to create their own `prompter` that build requests for the AI to
+  generate a specific kind of response. Please take a look at the pre-built prompters in the Prompters section if you
+  are looking for a ready to use `prompter` to use in your application ([like this one for type-safe
+  objects](/prompters/prompter-for-object)).
+</Callout>
+
+## Description
+
+A `prompter` is a class that builds a text request _(prompt)_ to send to the AI to generate a specific kind of response and validate that the response has the desired structure. A `prompter` may be used to generate responses that return structured values, like JSON, YAML, XML, CSV, etc.
+
+It is only responsable of generating the prompt and validating the generated response by the AI.
+
+It doesn't handle the communication with the AI or is even aware of which AI is being used. For this objective, it relies on a [`client`](/clients/about-clients) to send the prompt and receive the response.
+
+## The `prompter` interface
+
+```typescript
+export interface Prompter {
+  /**
+   * Sends a structured input to the Prompter and returns a promise that resolves to the expected response object.
+   * @function
+   * @template ResponseObject - The type of the response object.
+   * @param {object} input - The object input to be sent to the Prompter.
+   * @returns {Promise<ResponseObject>} - A promise that resolves with a type safe response object.
+   */
+  send<ResponseObject>(input: object): Promise<ResponseObject>
+}
+```
+
+A class that implements the `Prompter` interface must implement the `send` method. This method receives an object as input and returns a promise that resolves to a type safe response object.
+
+Please note the `ResponseObject` type. This type is used to define the type of the response object that the `send` method will return.

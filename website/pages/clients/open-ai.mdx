@@ -1,0 +1,37 @@
+import { Callout } from "nextra-theme-docs"
+
+# OpenAI
+
+<Callout type="info">
+  You need a valid OpenAI API key to use this client. You can get one
+  [here](https://platform.openai.com/account/api-keys).
+</Callout>
+
+## Description
+
+The `OpenAiClient` handles the communication with OpenAI's API, providing a way for a [`prompter`](/prompters/about-prompters) to send requests to the API.\
+Under the hood it simply uses a native `fetch` call to make HTTP requests to the API and get the responses in plain text.
+
+## Basic usage
+
+```typescript copy
+import { OpenAiClientBuilder } from "gptyped"
+
+const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY").build()
+```
+
+_**Note:** replace `YOUR_OPEN_AI_SECRET_KEY` with your actual [OpenAI key](https://platform.openai.com/account/api-keys)._
+
+## Options
+
+Use the `withOptions` method to customize the `OpenAiClient` behavior.
+
+```typescript {2-6} copy
+const gpTypedOpenAiClient = new OpenAiClientBuilder("YOUR_OPEN_AI_SECRET_KEY")
+  .withOptions({
+    model: "gpt-3.5-turbo",
+    max_tokens: 2500,
+    temperature: 0.4,
+  })
+  .build()
+```

@@ -1,7 +1,27 @@
 # Node dependencies and built files
-node_modules
+node_modules/
+.DS_Store
+.next/
+*.log
+dist/
+.turbo/
+out/
+
+# The built GPTyped package (either on dist or lib folders)
 dist
 lib
+
+# Theme styles
+packages/nextra-theme-*/style.css
+
+# Stork related
+*/**/public/*.st
+*/**/public/*.toml
+
+.vercel
+.idea/
+.eslintcache
+.env
 
 # Misc
 .DS_Store
