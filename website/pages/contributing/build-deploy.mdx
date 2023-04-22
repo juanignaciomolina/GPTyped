@@ -1,0 +1,36 @@
+# Build & Deploy
+
+## Node package
+
+Here is a list of useful commands for building and testing out GPTyped locally.
+
+- `npm run build` - Build the package
+- `npm run build:watch` - Build the package in watch mode
+- `npm run lint` - Lint the package
+- `npm run format` - Format the package to comply with Prettier
+
+### Release process
+
+Releases are handled through a Github Action. To release a new version, a new Github release is created and then the action will automatically publish the package to NPM.
+
+Versioning is handled through the [Semantic Versioning](https://semver.org/) standar. The Git tags used by Github and npmjs.com are generated using the [npm version](https://docs.npmjs.com/cli/v7/commands/npm-version) command.
+
+- `npm version patch` - To bump the version as a patch: `x.x.2`
+- `npm version minor` - To bump the version as a patch: `x.2.x`
+- `npm version major` - To bump the version as a patch: `2.x.x`
+
+## Documentation Website
+
+- `cd website/` then `pnpm run next` - To run the website locally. It will be available at http://localhost:3000
+
+### Website deployment
+
+The website is deployed to [Vercel](https://vercel.com) automatically through a Github integration.
+
+##### Production - [gptyped.com](https://gptyped.com)
+
+New commits pushed to the `main` branch will be deployed to the production URL.
+
+##### Beta - [beta.gptyped.com](https://beta.gptyped.com)
+
+New commits pushed to the `beta` branch will be deployed to the beta URL.

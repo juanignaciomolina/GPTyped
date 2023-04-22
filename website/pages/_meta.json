@@ -1,6 +1,14 @@
 {
-  "index": "Introduction",
-  "quick-start": "Quick start",
-  "clients": "Clients",
-  "prompters": "Prompters"
+  "index": {
+    "title": "Home",
+    "type": "page"
+  },
+  "docs": {
+    "title": "Documentation",
+    "type": "page"
+  },
+  "contributing": {
+    "title": "Contributing",
+    "type": "page"
+  }
 }
