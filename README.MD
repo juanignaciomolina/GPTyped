@@ -3,7 +3,7 @@
 ![NPM Version](https://img.shields.io/npm/v/gptyped) ![npm bundle size](https://img.shields.io/bundlephobia/min/gptyped) ![NPM MIT License](https://img.shields.io/npm/l/gptyped)
 
 <div align="center">
-  <h3 align="center"><a href="https://gptyped.com"><strong>👉 Explore the docs here 👈</strong></a></h3>
+  <h3 align="center"><a href="https://gptyped.com/docs/quick-start"><strong>👉 Explore the docs here 👈</strong></a></h3>
 </div>
 
 # GPTyped
@@ -32,7 +32,7 @@ or
 yarn add gptyped zod
 ```
 
-Ready to start? 👉 [Check out the full docs here](https://gptyped.com/) 👈
+Ready to start? 👉 [Check out the full docs here](https://gptyped.com/docs/quick-start) 👈
 
 ## Basic Usage
 
