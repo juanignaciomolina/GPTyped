@@ -1,0 +1,33 @@
+import { Callout } from "nextra-theme-docs"
+
+# Clients
+
+<Callout type="warning">
+  This information is relevant for developers who want to create their own `client` to connect to a remote AI. Please
+  take a look at the pre-built clients in the Clients section if you are looking for a ready to use client to use in
+  your application ([like this one for OpenAI](/clients/open-ai)).
+</Callout>
+
+## Description
+
+A `client` connects your application to a remote AI. It is a simple class that you can use to send text based requests _(prompts)_ to the AI and receive plain text responses.
+
+A `client` is used by one or more instances of `prompter` to send text requests to the AI and receive text responses.
+
+## The `client` interface
+
+```typescript
+export interface GPTypedClient {
+  /**
+   * Sends a prompt to the GPT service using a connector to a LLM remote service.
+   *
+   * @param {string} prompt - The prompt to send to the LLM service.
+   * @returns {Promise<string>} - A Promise that resolves to the generated text response from the LLM model.
+   */
+  sendPrompt(prompt: string): Promise<string>
+}
+```
+
+A class that implements the `GPTypedClient` interface has to implement the `sendPrompt` method, which has a single parameter: the prompt to send to the LLM service. It will asynchronously return the generated text response.
+
+It is a `client` responsibility to handle the communication with the LLM (AI) service, send the request and return the generated text response.

@@ -9,7 +9,9 @@
                     |___/|_|               
 
 
-Source: https://github.com/juanignaciomolina/GPTyped
+Learn more about this package at https://gptyped.com
+
+Source code: https://github.com/juanignaciomolina/GPTyped
 */
 
 // Entry point for the package
