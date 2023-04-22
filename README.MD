@@ -2,11 +2,13 @@
 
 ![NPM Version](https://img.shields.io/npm/v/gptyped) ![npm bundle size](https://img.shields.io/bundlephobia/min/gptyped) ![NPM MIT License](https://img.shields.io/npm/l/gptyped)
 
+<div align="center">
+  <h3 align="center"><a href="https://github.com/othneildrew/Best-README-Template"><strong>👉 Explore the docs here 👈</strong></a></h3>
+</div>
+
 # GPTyped
 
 Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interact with OpenAI's GPT language model in a type-safe way. With GPTyped, you can send objects as prompts and receive structured responses from LLM AIs in a breeze, whether you're running it on the Web or on the Server. 💻
-
-👉 [Check out the full docs here](https://gptyped.com/) 👈
 
 ## Features
 
@@ -29,6 +31,8 @@ or
 ```bash
 yarn add gptyped zod
 ```
+
+Ready to start? 👉 [Check out the full docs here](https://gptyped.com/) 👈
 
 ## Basic Usage
 
