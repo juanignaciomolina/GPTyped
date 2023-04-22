@@ -6,6 +6,8 @@
 
 Welcome to GPTyped! 🎉 A small, but powerful NPM package that lets you interact with OpenAI's GPT language model in a type-safe way. With GPTyped, you can send objects as prompts and receive structured responses from LLM AIs in a breeze, whether you're running it on the Web or on the Server. 💻
 
+👉 [Check out the full docs here](https://gptyped.com/) 👈
+
 ## Features
 
 - ✨ Sends TypeScript objects as prompts and receives TypeScript objects as responses.
