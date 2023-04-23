@@ -25,11 +25,11 @@ const config: DocsThemeConfig = {
     return {
       description:
         frontMatter.description ||
-        "GPtyped: A simple library to send, receive and verify structured data (like JSON) to OpenAI and other LLMs.",
+        "GPTyped: A simple library to send, receive and verify structured data (like JSON) to OpenAI and other LLMs.",
       openGraph: {
         images: [{ url: frontMatter.image || "https://gptyped.com/og.png" }],
       },
-      titleTemplate: "%s – GPtyped",
+      titleTemplate: "%s – GPTyped",
       twitter: {
         cardType: "summary_large_image",
         site: "https://gptyped.com",
@@ -75,7 +75,7 @@ const config: DocsThemeConfig = {
     return (
       <>
         <meta property="og:url" content={url} />
-        <meta property="og:title" content={frontMatter.title || "GPtyped"} />
+        <meta property="og:title" content={frontMatter.title || "GPTyped"} />
         <meta
           property="og:description"
           content={
