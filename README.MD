@@ -1,9 +1,9 @@
+## This project is no longer maintained
+This project was created before models where able to output structured schemas. Nowadays, many AI providers (OpenAI, Anthropic, Google, etc) offer native capabilties to produce structured outputs as JSONs. I recommend using Vercel's AI SDK, which can take care of this and will use Zod behind the scenes to validate the output, just as this package did years ago but with a much larger community and better maintenance. Thank you for your support! 🙌
+
 ![GPTyped Logo](https://user-images.githubusercontent.com/4109119/232146486-ba95a5a7-54c4-4325-ad38-9f0dc0b77c51.png)
 
 ![NPM Version](https://img.shields.io/npm/v/gptyped) ![npm bundle size](https://img.shields.io/bundlephobia/min/gptyped) ![NPM MIT License](https://img.shields.io/npm/l/gptyped)
-
-### This project is no longer maintained
-This project was created before models where able to output structured schemas. Nowadays, many AI providers (OpenAI, Anthropic, Google, etc) offer native capabilties to produce structured outputs as JSONs. I recommend using Vercel's AI SDK, which can take care of this and will use Zod behind the scenes to validate the output, just as this package did years ago but with a much larger community and better maintenance.
 
 <div align="center">
   <h3 align="center"><a href="https://gptyped.vercel.app/docs/quick-start"><strong>👉 Explore the docs here 👈</strong></a></h3>
